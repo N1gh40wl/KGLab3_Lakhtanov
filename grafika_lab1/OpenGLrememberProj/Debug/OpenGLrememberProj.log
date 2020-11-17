@@ -1,0 +1,7 @@
+﻿  Render.cpp
+C:\Users\Савелий\Desktop\КГ\grafika_lab1\OpenGLrememberProj\Render.cpp(180,9): warning C4101: Q12: неиспользованная локальная переменная
+C:\Users\Савелий\Desktop\КГ\grafika_lab1\OpenGLrememberProj\Render.cpp(179,9): warning C4101: Q11: неиспользованная локальная переменная
+C:\Users\Савелий\Desktop\КГ\grafika_lab1\OpenGLrememberProj\Render.cpp(439,9): warning C4101: Points2: неиспользованная локальная переменная
+C:\Users\Савелий\Desktop\КГ\grafika_lab1\OpenGLrememberProj\Render.cpp(50): warning C4715: vector3d: значение возвращается не при всех путях выполнения
+C:\Users\Савелий\Desktop\КГ\grafika_lab1\OpenGLrememberProj\Render.cpp(43): warning C4715: normalize: значение возвращается не при всех путях выполнения
+  OpenGLrememberProj.vcxproj -> C:\Users\Савелий\Desktop\КГ\grafika_lab1\Debug\OpenGLrememberProj.exe
