@@ -55,7 +55,7 @@ double vector3d(double a1, double b1, double c1, double a2, double b2, double c2
 
 double f(double p1, double p2, double p3, double p4, double t)
 {
-	//return p1 * (1 - t) * (1 - t) + 2 * p2 * t * (1 - t) + p3 * t * t; //посчитанная формула
+	//return p1 * (1 - t) * (1 - t) + 2 * p2 * t * (1 - t) + p3 * t * t; //ГЇГ®Г±Г·ГЁГІГ Г­Г­Г Гї ГґГ®Г°Г¬ГіГ«Г 
 	return (1 - t) * (1 - t) * (1 - t) * p1 + 3 * t * (1 - t) * (1 - t) * p2 + 3 * t * t * (1 - t) * p3 + t * t * t * p4;
 }
 
@@ -66,7 +66,7 @@ double fder(double p1, double p2, double p3, double p4, double t){
 
 double fErmit(double p1, double p4, double r1, double r4, double t)
 {
-	return p1 * (2 * t * t * t * -3 * t * t + 1) + p4 * (-2 * t * t * t + 3 * t * t) + r1 * (t * t * t - 2 * t * t + t) + r4*(t * t * t - t * t);
+	return p1 * (2 * t * t * t -3 * t * t + 1) + p4 * (-2 * t * t * t + 3 * t * t) + r1 * (t * t * t - 2 * t * t + t) + r4*(t * t * t - t * t);
 }
 double factorial(double num) {
 	double res=1;
@@ -157,13 +157,13 @@ void plane() {
 void Render(double delta_time)
 {
 
-	if (flag == 0) t_max += delta_time / 10; //t_max становится = 1 за 5 секунд
-	if (t_max > 1) flag = 1;// флажок )
-	if (flag == 1) t_max -= delta_time / 10; //идем назад
-	if (t_max < 0) flag = 0;// флажок )	
+	if (flag == 0) t_max += delta_time / 10; //t_max Г±ГІГ Г­Г®ГўГЁГІГ±Гї = 1 Г§Г  5 Г±ГҐГЄГіГ­Г¤
+	if (t_max > 1) flag = 1;// ГґГ«Г Г¦Г®ГЄ )
+	if (flag == 1) t_max -= delta_time / 10; //ГЁГ¤ГҐГ¬ Г­Г Г§Г Г¤
+	if (t_max < 0) flag = 0;// ГґГ«Г Г¦Г®ГЄ )	
 
-	//КРИВАЯ БЕЗЬЕ
-	double P1[] = { 0,0,0 }; //Наши точки, массивчик double
+	//ГЉГђГ€Г‚ГЂГџ ГЃГ…Г‡ГњГ…
+	double P1[] = { 0,0,0 }; //ГЌГ ГёГЁ ГІГ®Г·ГЄГЁ, Г¬Г Г±Г±ГЁГўГ·ГЁГЄ double
 	double P2[] = { 2,4,20 };
 	double P3[] = { 15,2,2 };
 	double P4[] = { -5,10,4 };
@@ -226,13 +226,13 @@ void Render(double delta_time)
 	//glEnd();
 
 	glColor3d(0, 0, 1);
-	glBegin(GL_LINE_STRIP); //построим отрезки P1P2 и P2P3
+	glBegin(GL_LINE_STRIP); //ГЇГ®Г±ГІГ°Г®ГЁГ¬ Г®ГІГ°ГҐГ§ГЄГЁ P1P2 ГЁ P2P3
 	glVertex3dv(P1);
 	glVertex3dv(P2);
 	glVertex3dv(P3);
 	glVertex3dv(P4);
 	glEnd();
-	glLineWidth(3); //ширина линии
+	glLineWidth(3); //ГёГЁГ°ГЁГ­Г  Г«ГЁГ­ГЁГЁ
 	glColor3d(0, 1, 0);
 	glBegin(GL_LINE_STRIP);
 	for (double t = 0; t <= 1; t += 0.001)
@@ -240,7 +240,7 @@ void Render(double delta_time)
 		P[0] = f(P1[0], P2[0], P3[0], P4[0], t);
 		P[1] = f(P1[1], P2[1], P3[1], P4[1], t);
 		P[2] = f(P1[2], P2[2], P3[2], P4[2], t);
-		glVertex3dv(P); //Рисуем точку P
+		glVertex3dv(P); //ГђГЁГ±ГіГҐГ¬ ГІГ®Г·ГЄГі P
 	}
 	glEnd();
 
@@ -249,8 +249,8 @@ void Render(double delta_time)
 	
 
 	glColor3d(1, 0, 1);
-	glLineWidth(1); //возвращаем ширину линии = 1
-	//нарисуем все точки
+	glLineWidth(1); //ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ ГёГЁГ°ГЁГ­Гі Г«ГЁГ­ГЁГЁ = 1
+	//Г­Г Г°ГЁГ±ГіГҐГ¬ ГўГ±ГҐ ГІГ®Г·ГЄГЁ
 	glPointSize(10);
 	//glBegin(GL_POINTS);
 	//glVertex3dv(P);
@@ -262,9 +262,9 @@ void Render(double delta_time)
 	glVertex3dv(P3);
 	glVertex3dv(P4);
 	glEnd();
-	//КОНЕЦ КРИВОЙ БЕЗЬЕ
+	//ГЉГЋГЌГ…Г– ГЉГђГ€Г‚ГЋГ‰ ГЃГ…Г‡ГњГ…
 
-	// АНИМАЦИЯ САМОЛЕТИКА
+	// ГЂГЌГ€ГЊГЂГ–Г€Гџ Г‘ГЂГЊГЋГ‹Г…Г’Г€ГЉГЂ
 
 
 
@@ -311,7 +311,7 @@ void Render(double delta_time)
 	if (angle_key == 0) angle = angle * -1;
 	glPushMatrix();
 	glTranslated(P[0], P[1], P[2]);
-	glRotated(angle, 0, 0, 1);//рысканье
+	glRotated(angle, 0, 0, 1);//Г°Г»Г±ГЄГ Г­ГјГҐ
 	//angle_key = 0;
 	//angle = vectorAngle(1, 0, 0, Vec[0], 0, Vec[2]);
 	//if (Vec[2] < 0) {
@@ -323,7 +323,7 @@ void Render(double delta_time)
 	//if (angle_key == 1) angle = angle * 1;
 	//if (angle_key == 0) angle = angle * -1;
 	//
-	//glRotated(angle, 0, 1, 0);//крен
+	//glRotated(angle, 0, 1, 0);//ГЄГ°ГҐГ­
 
 
 	
@@ -338,12 +338,12 @@ void Render(double delta_time)
 	};
 	if (angle_key == 1) angle = angle * 1;
 	if (angle_key == 0) angle = angle * -1;
-	glRotated(angle, 1, 0, 0);//тангаж
+	glRotated(angle, 1, 0, 0);//ГІГ Г­ГЈГ Г¦
 	//glColor3d(1, 0, 0);
 	plane();
-	// КОНЕЦ АНИМАЦИИ САМОЛЕТИКА
+	// ГЉГЋГЌГ…Г– ГЂГЌГ€ГЊГЂГ–Г€Г€ Г‘ГЂГЊГЋГ‹Г…Г’Г€ГЉГЂ
 
-	//НАЧАЛО КРИВОЙ ЭРМИТА
+	//ГЌГЂГ—ГЂГ‹ГЋ ГЉГђГ€Г‚ГЋГ‰ ГќГђГЊГ€Г’ГЂ
 	glPopMatrix();
 	glPushMatrix();
 	glTranslated(4, 0, 0);
@@ -359,7 +359,7 @@ void Render(double delta_time)
 		P[0] = fErmit(E1[0], E4[0], R1[0], R4[0], t);
 		P[1] = fErmit(E1[1], E4[1], R1[1], R4[1], t);
 		P[2] = fErmit(E1[2], E4[2], R1[2], R4[2], t);
-		glVertex3dv(P); //Рисуем точку P
+		glVertex3dv(P); //ГђГЁГ±ГіГҐГ¬ ГІГ®Г·ГЄГі P
 	}
 	glEnd();
 
@@ -379,10 +379,10 @@ void Render(double delta_time)
 	glVertex3dv(E1);
 	glVertex3dv(E4);
 	glEnd();
-	// КОНЕЦ КРИВОЙ ЭРМИТА
+	// ГЉГЋГЌГ…Г– ГЉГђГ€Г‚ГЋГ‰ ГќГђГЊГ€Г’ГЂ
 	glPopMatrix();
 
-	// НАЧАЛО ПОВЕРХНОСТИ БЕЗЬЕ
+	// ГЌГЂГ—ГЂГ‹ГЋ ГЏГЋГ‚Г…ГђГ•ГЌГЋГ‘Г’Г€ ГЃГ…Г‡ГњГ…
 	glPushMatrix();
 	glTranslated(8, 0, 2.5);
 	double Points[4][4][3] = {
@@ -439,13 +439,13 @@ void Render(double delta_time)
 	double Points2[4][4][3];
 	 i = 0;
 	 j = 0;
-	for (double u = 0; u <= 1; u += 0.1) {// Рисуем поверхность точками
+	for (double u = 0; u <= 1; u += 0.1) {// ГђГЁГ±ГіГҐГ¬ ГЇГ®ГўГҐГ°ГµГ­Г®Г±ГІГј ГІГ®Г·ГЄГ Г¬ГЁ
 		j = 0;
 		for (double v = 0; v <= 1; v += 0.1) {
 			P[0] = f3d(Points,u,v,0);
 			P[1] = f3d(Points, u, v, 1);
 			P[2] = f3d(Points, u, v, 2);
-			glVertex3dv(P); //Рисуем точку P
+			glVertex3dv(P); //ГђГЁГ±ГіГҐГ¬ ГІГ®Г·ГЄГі P
 			//Points2[i][j][0] = P[0];
 			//Points2[i][j][1] = P[1];
 			//Points2[i][j][2] = P[2];
@@ -470,7 +470,7 @@ void Render(double delta_time)
 			P[0] = f3d(Points, u, v, 0);
 			P[1] = f3d(Points, u, v, 1);
 			P[2] = f3d(Points, u, v, 2);
-			glVertex3dv(P); //Рисуем точку P
+			glVertex3dv(P); //ГђГЁГ±ГіГҐГ¬ ГІГ®Г·ГЄГі P
 			v += 0.1;
 		}
 		v = 0;
@@ -485,7 +485,7 @@ void Render(double delta_time)
 			P[0] = f3d(Points, v,u, 0);
 			P[1] = f3d(Points, v,u, 1);
 			P[2] = f3d(Points, v,u, 2);
-			glVertex3dv(P); //Рисуем точку P
+			glVertex3dv(P); //ГђГЁГ±ГіГҐГ¬ ГІГ®Г·ГЄГі P
 			v += 0.1;
 		}
 		v = 0;
@@ -493,7 +493,7 @@ void Render(double delta_time)
 		glEnd();
 	}
 
-	// КОНЕЦ ПОВЕРХНОСТИ БЕЗЬЕ
+	// ГЉГЋГЌГ…Г– ГЏГЋГ‚Г…ГђГ•ГЌГЋГ‘Г’Г€ ГЃГ…Г‡ГњГ…
 }
 	
 
